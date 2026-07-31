@@ -83,10 +83,21 @@ async function initializeOpenCodeDatabase(): Promise<void> {
     const healthDeadline = Date.now() + 90_000;
     while (Date.now() < healthDeadline) {
       try {
-        const response = await fetch(
-          `http://127.0.0.1:${port}/global/health`,
+        // Use the same bounded curl path as the production replay checks.
+        // Bun fetch can wait indefinitely on some Docker Desktop loopback paths.
+        const result = await runCommand(
+          [
+            "curl",
+            "--silent",
+            "--show-error",
+            "--max-time",
+            "5",
+            `http://127.0.0.1:${port}/global/health`,
+          ],
+          { allowFailure: true },
         );
-        const health = (await response.json()) as {
+        if (result.exitCode !== 0) throw new Error(result.stderr);
+        const health = JSON.parse(result.stdout) as {
           healthy?: boolean;
           version?: string;
         };
