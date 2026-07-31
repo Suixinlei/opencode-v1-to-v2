@@ -5,6 +5,9 @@
 
 ## Unreleased
 
+## 0.1.0 - 2026-07-31
+
+- 发布 source-only preview；保持 `"private": true`，不发布 npm package。
 - 开始补充开源治理、贡献、安全和 CI 基础设施。
 - 记录公开发布阻断项与公共/组织专用代码边界。
 - 让 CLI 无参数、`-h` 和 `--help` 安全输出使用说明。
