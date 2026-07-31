@@ -1,0 +1,23 @@
+node_modules/
+
+# Local tooling and build output
+.DS_Store
+.env
+.env.*
+!.env.example
+coverage/
+dist/
+*.log
+
+# Migration inputs and outputs may contain private conversation data.
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.wal
+*.shm
+*.cookie
+*.bak
+*.backup

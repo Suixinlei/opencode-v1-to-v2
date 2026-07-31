@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "targetProfile": "opencode-v2@1.18.9+4da7bb44.official-musl-v1",
+  "imageRepository": "ghcr.io/suixinlei/opencode-v1-to-v2-target",
+  "openCode": {
+    "version": "1.18.9",
+    "tag": "v1.18.9",
+    "commit": "4da7bb44c84e013fa53e9c5d02ac753d1435c81a",
+    "release": "https://github.com/anomalyco/opencode/releases/tag/v1.18.9"
+  },
+  "baseImage": "alpine:3.22.1@sha256:4bcff63911fcb4448bd4fdacec207030997caf25e9bea4045fa6c8c44de311d1",
+  "continuationHelperImage": "oven/bun:1.3.13-alpine@sha256:4de475389889577f346c636f956b42a5c31501b654664e9ae5726f94d7bb5349",
+  "runtimePackages": {
+    "version": "14.2.0-r6",
+    "linux/amd64": {
+      "libgcc": {
+        "asset": "libgcc-14.2.0-r6.apk",
+        "sha256": "04f3467bc967e705221a843fe4d3de5850db826e571686e0c0ed453d38cb5c59"
+      },
+      "libstdcxx": {
+        "asset": "libstdc++-14.2.0-r6.apk",
+        "sha256": "939f7c99898f3e8154207a17f4acbe8bc40437e1bb1b43f5525620ca9e452a2e"
+      }
+    },
+    "linux/arm64": {
+      "libgcc": {
+        "asset": "libgcc-14.2.0-r6.apk",
+        "sha256": "ba1835eec3ad8a120efd3d5020e561d53553a0513763a08f509e3ce6d4baa9ca"
+      },
+      "libstdcxx": {
+        "asset": "libstdc++-14.2.0-r6.apk",
+        "sha256": "0d2f054057a4f932e985a129eccb79908b40964185139a0a609aed3032aba064"
+      }
+    }
+  },
+  "platforms": {
+    "linux/amd64": {
+      "asset": "opencode-linux-x64-musl.tar.gz",
+      "archiveSha256": "5238a504bb6fee4e9a1507e551e6f32894ce9d2e1afcbcec5672cff61d0ad270",
+      "binarySha256": "fcd56e4ea76e80b08b936cd2fb3dff18a1eaf8c871180e66e2e7424c3634c188"
+    },
+    "linux/arm64": {
+      "asset": "opencode-linux-arm64-musl.tar.gz",
+      "archiveSha256": "8fe9da991068f9e1524c6cb34dad52806bf5927baaa4d583b6fd4ea7987210f4",
+      "binarySha256": "6f08a8a1e91dfe0720d2b6eae8767c10d236c808b7147c5c1944da2862b0b0ce"
+    }
+  }
+}

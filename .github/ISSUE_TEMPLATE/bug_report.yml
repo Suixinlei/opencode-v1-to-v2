@@ -1,0 +1,64 @@
+name: Bug report
+description: 报告可使用匿名 fixture 复现的问题
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        不要提交真实数据库、会话正文、Cookie、AK、内部地址或用户标识。
+        安全问题请按 SECURITY.md 私下报告。
+  - type: input
+    id: version
+    attributes:
+      label: 项目版本或 commit
+    validations:
+      required: true
+  - type: input
+    id: target
+    attributes:
+      label: OpenCode target profile
+      description: 提供版本和 digest，不要提供私有 registry 地址。
+    validations:
+      required: true
+  - type: dropdown
+    id: command
+    attributes:
+      label: 命令阶段
+      options:
+        - inventory
+        - migrate-local
+        - cleanup-local
+        - mixed migration
+        - continuation proof
+        - ops
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望行为
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际行为与已脱敏错误
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 最小复现
+      description: 只使用人工或不可逆匿名化 fixture。
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 隐私确认
+      options:
+        - label: 我确认内容不包含真实用户数据、数据库、凭证、内部地址或生产标识。
+          required: true

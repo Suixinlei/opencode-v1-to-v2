@@ -1,0 +1,8 @@
+**
+!LICENSE
+!NOTICE
+!THIRD_PARTY_NOTICES.md
+!docker/
+!docker/opencode-target/
+!docker/opencode-target/Dockerfile
+!docker/opencode-target/profile.json
