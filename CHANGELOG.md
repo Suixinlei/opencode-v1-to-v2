@@ -23,3 +23,5 @@
   immutable SQLite URI 的问题，同时保留无 sidecar 写入保证。
 - 目标镜像验收的本地健康检查改用带硬超时的 `curl`，避免部分 Docker Desktop
   环境中的 Bun loopback 请求无限等待。
+- 更新到 TypeScript 7.0.2、`@types/bun` 1.3.14 和当前 GitHub Actions 主版本，
+  并继续以 commit SHA 固定所有第三方 action。
