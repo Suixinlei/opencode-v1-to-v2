@@ -1,4 +1,4 @@
-import { Database } from "bun:sqlite";
+import { constants, Database } from "bun:sqlite";
 import { existsSync, realpathSync, statSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import type {
@@ -96,10 +96,12 @@ function openReadonly(databasePath: string): Database {
   }
   const uri = pathToFileURL(resolved);
   uri.searchParams.set("immutable", "1");
-  const database = new Database(uri.href, {
-    readonly: true,
-    strict: true,
-  });
+  // Bun requires SQLITE_OPEN_URI explicitly on Linux. Without it the same
+  // immutable URI works on macOS but is treated as a literal filename on Linux.
+  const database = new Database(
+    uri.href,
+    constants.SQLITE_OPEN_READONLY | constants.SQLITE_OPEN_URI,
+  );
   database.exec("PRAGMA query_only = ON");
   database.exec("PRAGMA busy_timeout = 5000");
   return database;

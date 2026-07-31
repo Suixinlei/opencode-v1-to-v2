@@ -19,3 +19,5 @@
   target image、GHCR 发布 workflow、SBOM 和 provenance。
 - target profile 更新为
   `opencode-v2@1.18.9+4da7bb44.official-musl-v1`，旧 plan 必须重新生成。
+- 修复 Bun 1.3.13 在 Linux 上未显式启用 `SQLITE_OPEN_URI` 时无法打开
+  immutable SQLite URI 的问题，同时保留无 sidecar 写入保证。

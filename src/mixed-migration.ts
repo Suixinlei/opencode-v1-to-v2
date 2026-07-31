@@ -1,4 +1,4 @@
-import { Database } from "bun:sqlite";
+import { constants, Database } from "bun:sqlite";
 import {
   existsSync,
   realpathSync,
@@ -266,10 +266,10 @@ function openReadonly(databasePath: string): Database {
   }
   const uri = pathToFileURL(resolved);
   uri.searchParams.set("immutable", "1");
-  const database = new Database(uri.href, {
-    readonly: true,
-    strict: true,
-  });
+  const database = new Database(
+    uri.href,
+    constants.SQLITE_OPEN_READONLY | constants.SQLITE_OPEN_URI,
+  );
   database.exec("PRAGMA query_only = ON");
   database.exec("PRAGMA busy_timeout = 5000");
   return database;
